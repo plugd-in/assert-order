@@ -1,7 +1,13 @@
 [package]
 name = "assert-order-derive"
+description = "Derive macros for `assert-order`."
 version.workspace = true
 edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+keywords.workspace = true
+repository.workspace = true
 
 [lib]
 proc-macro = true

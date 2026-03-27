@@ -3,10 +3,10 @@ resolver = "3"
 members = ["crates/assert_order", "crates/assert_order_derive"]
 
 [workspace.package]
-edition = "2024"
+edition = "2021"
 version = "0.0.1"
+rust-version = "1.80"
 authors = ["Reynaldo Bontje <rey.bontje80@gmail.com>"]
 license = "MIT"
 keywords = ["derive", "assert", "enums", "ordering"]
 repository = "https://github.com/plugd-in/assert_order"
-categories = ["development-tools::debugging"]

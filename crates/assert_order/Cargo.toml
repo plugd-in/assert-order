@@ -1,7 +1,13 @@
 [package]
 name = "assert-order"
+description = "Assert the order of Rust enum variants."
 version.workspace = true
 edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+keywords.workspace = true
+repository.workspace = true
 
 [dependencies]
 assert-order-derive = { path = "../assert_order_derive" }
