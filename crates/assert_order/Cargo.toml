@@ -11,4 +11,4 @@ repository.workspace = true
 readme.workspace = true
 
 [dependencies]
-assert-order-derive = { path = "../assert_order_derive", version = "0.0.2" }
+assert-order-derive = { path = "../assert_order_derive", version = "0.0.3" }

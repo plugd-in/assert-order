@@ -1,6 +1,6 @@
 use proc_macro::TokenStream;
 use quote::quote;
-use syn::{Data, DeriveInput, parse_macro_input};
+use syn::{parse_macro_input, Data, DeriveInput};
 
 /// Derive macro for implementing `VariantOrder` based on
 /// the definition of an enum.
@@ -28,6 +28,18 @@ pub fn variant_order_derive(input: TokenStream) -> TokenStream {
         }
     };
 
+    let lifetimes = ast
+        .generics
+        .lifetimes()
+        .map(|lifetime| lifetime.lifetime.clone())
+        .collect::<Vec<_>>();
+
+    let types = ast
+        .generics
+        .type_params()
+        .map(|param| param.ident.clone())
+        .collect::<Vec<_>>();
+
     let variants = enum_def
         .variants
         .iter()
@@ -37,7 +49,7 @@ pub fn variant_order_derive(input: TokenStream) -> TokenStream {
 
     let name = &ast.ident;
     let order_impl = quote! {
-        impl VariantOrder for #name {
+        impl<#(#lifetimes,)* #(#types),*> VariantOrder for #name<#(#lifetimes,)* #(#types),*> {
             fn order() -> &'static [&'static str] {
                 static VARIANTS: [&'static str; #variant_count] = [
                     #(stringify!(#variants)),*

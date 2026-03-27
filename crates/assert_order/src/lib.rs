@@ -79,7 +79,7 @@ where
 mod tests {
     use std::thread::spawn;
 
-    use crate::{VariantOrder, assert_order};
+    use crate::{assert_order, VariantOrder};
 
     #[test]
     fn assert_proper_ordering() {
@@ -88,6 +88,19 @@ mod tests {
         enum TestEnum {
             A,
             B(),
+            C {},
+        }
+
+        assert_eq!(["A", "B", "C"], TestEnum::order());
+    }
+
+    #[test]
+    fn assert_proper_ordering_lifetime() {
+        #[derive(VariantOrder)]
+        #[expect(unused)]
+        enum TestEnum<'a> {
+            A,
+            B(&'a str),
             C {},
         }
 
@@ -105,6 +118,32 @@ mod tests {
         }
 
         assert_order::<TestEnum, _, _>(["A", "B", "C"]);
+    }
+
+    #[test]
+    fn expect_nonpanic_lifetime() {
+        #[derive(VariantOrder)]
+        #[expect(unused)]
+        enum TestEnum<'a, T> {
+            A,
+            B(&'a str),
+            C { inner: T },
+        }
+
+        assert_order::<TestEnum::<'_, ()>, _, _>(["A", "B", "C"]);
+    }
+
+    #[test]
+    fn expect_nonpanic_generic() {
+        #[derive(VariantOrder)]
+        #[expect(unused)]
+        enum TestEnum<T> {
+            A,
+            B(T),
+            C {},
+        }
+
+        assert_order::<TestEnum::<()>, _, _>(["A", "B", "C"]);
     }
 
     #[test]
