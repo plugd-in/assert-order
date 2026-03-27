@@ -10,4 +10,4 @@ keywords.workspace = true
 repository.workspace = true
 
 [dependencies]
-assert-order-derive = { path = "../assert_order_derive" }
+assert-order-derive = { path = "../assert_order_derive", version = "0.0.1" }
