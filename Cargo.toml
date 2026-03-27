@@ -9,4 +9,4 @@ rust-version = "1.80"
 authors = ["Reynaldo Bontje <rey.bontje80@gmail.com>"]
 license = "MIT"
 keywords = ["derive", "assert", "enums", "ordering"]
-repository = "https://github.com/plugd-in/assert_order"
+repository = "https://github.com/plugd-in/assert-order"
