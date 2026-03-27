@@ -8,6 +8,7 @@ authors.workspace = true
 license.workspace = true
 keywords.workspace = true
 repository.workspace = true
+readme.workspace = true
 
 [dependencies]
-assert-order-derive = { path = "../assert_order_derive", version = "0.0.1" }
+assert-order-derive = { path = "../assert_order_derive", version = "0.0.2" }
