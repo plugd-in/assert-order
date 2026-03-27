@@ -1,0 +1,7 @@
+[package]
+name = "assert-order"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+assert-order-derive = { path = "../assert_order_derive" }
